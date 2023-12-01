@@ -35,8 +35,9 @@ public class StatsService {
 
     public int getBelowAverageSales(int[] sales) { // Функция поиска количества месяцев, когда продажи были ниже средней суммы продаж
         int belowAverageSales = 0;
+        int averageSalesAmount = getAverageSalesAmount(sales);
         for (int belowAverage : sales) {
-            if (belowAverage < getAverageSalesAmount(sales)) {
+            if (belowAverage < averageSalesAmount) {
                 belowAverageSales = belowAverageSales + 1;
             } else {
                 belowAverageSales = belowAverageSales + 0;
