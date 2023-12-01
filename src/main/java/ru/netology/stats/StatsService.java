@@ -39,8 +39,6 @@ public class StatsService {
         for (int belowAverage : sales) {
             if (belowAverage < averageSalesAmount) {
                 belowAverageSales = belowAverageSales + 1;
-            } else {
-                belowAverageSales = belowAverageSales + 0;
             }
         }
         return belowAverageSales;
