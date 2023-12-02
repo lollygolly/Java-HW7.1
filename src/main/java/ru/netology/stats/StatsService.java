@@ -46,8 +46,9 @@ public class StatsService {
 
     public int getAboveAverageSales(long[] sales) { // Функция поиска количества месяцев, когда продажи были выше средней суммы продаж
         int aboveAverageSales = 0;
+        long averageSalesAmount = getAverageSalesAmount(sales);
         for (long aboveAverage : sales) {
-            if (aboveAverage > getAverageSalesAmount(sales)) {
+            if (aboveAverage > averageSalesAmount) {
                 aboveAverageSales++;
             }
         }
