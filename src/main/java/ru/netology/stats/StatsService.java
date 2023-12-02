@@ -1,19 +1,19 @@
 package ru.netology.stats;
 
 public class StatsService {
-    public int getAllSales(int[] sales) { // Функция поиска суммы всех продаж
-        int allSales = 0;
-        for (int i = 0; i < sales.length; i++) {
-            allSales = allSales + sales[i];
+    public long getAllSales(long[] sales) { // Функция поиска суммы всех продаж
+        long allSales = 0;
+        for (long sale : sales) {
+            allSales += sale;
         }
         return allSales;
     }
 
-    public int getAverageSalesAmount(int[] sales) {
+    public long getAverageSalesAmount(long[] sales) {
         return getAllSales(sales) / sales.length; // Функция поиска средней суммы продаж
     }
 
-    public int getMaxSales(int[] sales) { // Функция поиска последнего месяца, когда сумма продаж была максимальной
+    public int getMaxSales(long[] sales) { // Функция поиска последнего месяца, когда сумма продаж была максимальной
         int maxMonth = 0;
         for (int i = 0; i < sales.length; i++) {
             if (sales[i] >= sales[maxMonth]) {
@@ -23,7 +23,7 @@ public class StatsService {
         return maxMonth + 1;
     }
 
-    public int getMinSales(int[] sales) { // Функция поиска последнего месяца, когда сумма продаж была минимальной
+    public int getMinSales(long[] sales) { // Функция поиска последнего месяца, когда сумма продаж была минимальной
         int minMonth = 0;
         for (int i = 0; i < sales.length; i++) {
             if (sales[i] < sales[minMonth]) {
@@ -33,24 +33,22 @@ public class StatsService {
         return minMonth + 1;
     }
 
-    public int getBelowAverageSales(int[] sales) { // Функция поиска количества месяцев, когда продажи были ниже средней суммы продаж
+    public int getBelowAverageSales(long[] sales) { // Функция поиска количества месяцев, когда продажи были ниже средней суммы продаж
         int belowAverageSales = 0;
-        int averageSalesAmount = getAverageSalesAmount(sales);
-        for (int belowAverage : sales) {
+        long averageSalesAmount = getAverageSalesAmount(sales);
+        for (long belowAverage : sales) {
             if (belowAverage < averageSalesAmount) {
-                belowAverageSales = belowAverageSales + 1;
+                belowAverageSales++;
             }
         }
         return belowAverageSales;
     }
 
-    public int getAboveAverageSales(int[] sales) { // Функция поиска количества месяцев, когда продажи были выше средней суммы продаж
+    public int getAboveAverageSales(long[] sales) { // Функция поиска количества месяцев, когда продажи были выше средней суммы продаж
         int aboveAverageSales = 0;
-        for (int aboveAverage : sales) {
+        for (long aboveAverage : sales) {
             if (aboveAverage > getAverageSalesAmount(sales)) {
-                aboveAverageSales = aboveAverageSales + 1;
-            } else {
-                aboveAverageSales = aboveAverageSales + 0;
+                aboveAverageSales++;
             }
         }
         return aboveAverageSales;
